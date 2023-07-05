@@ -1,0 +1,19 @@
+version: "3.1"
+
+services:
+  my_mongo_db:
+    image: mongo:6.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db/mongo:/data/db
+
+  my_maria_db:
+    image: mariadb:10.6.14
+    ports:
+      - 3306:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD
+    volumes:
+      - ./db/maria:/var/lib/mysql
+  
