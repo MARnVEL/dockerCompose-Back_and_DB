@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/check-mongodb-connection', ( _, res ) => {
+    // connect(`mongodb://localhost:27017`) // Esto es para probar el servidor conectandose sólo a los containers de las Bases de datos (sin containerizar el servidor).
     connect(`mongodb://${process.env.MONGO_DB_HOST}:27017`)
     .then(() => {
         res.send("connected");
@@ -34,6 +35,7 @@ app.get('/check-mongodb-connection', ( _, res ) => {
 
 app.get('/check-mariadb-connection', ( _, res ) => {
     const connection = mysql.createConnection({
+        //host: 'localhost',// Esto es para probar el servidor conectandose sólo a los containers de las Bases de datos (sin containerizar el servidor).
         host: process.env.MARIADB_HOST,
         user: process.env.MARIADB_USER,
         password: process.env.MARIADB_PASSWORD,
