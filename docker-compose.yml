@@ -24,9 +24,13 @@ services:
     ports:
       - 3000:4000
     environment:
-      - MONGO_DB_HOST=my_mongo_db
+      # Mongo environment variables:
+      - DB_MONGO_HOST=my_mongo_db
+      - DB_PROTOCOL=$DB_PROTOCOL
 
-      - MARIADB_HOST=my_maria_db
-      - MARIADB_USER=root
-      - MARIADB_PASSWORD=$MARIADB_ROOT_PASSWORD
+      # MySQL/MariaDB environment variables:
+      - DB_MARIA_HOST=my_maria_db
+      - DB_MARIA_USER=root
+      - DB_MARIA_PASSWORD=$MARIADB_ROOT_PASSWORD
+
   

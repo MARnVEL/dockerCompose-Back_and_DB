@@ -3,12 +3,9 @@
 
 //Importing external libraries
 const express = require('express');
-const { connect } = require('mongoose');
-const mysql = require('mysql2');
 
 //Importing Routes
-// const routes = require('./routes/connection.routes');
-
+const routes = require('./routes/connection.routes');
 
 //Initialize express
 const app = express();
@@ -18,7 +15,7 @@ const port = 4000;
 app.get('/', (req, res) => {
     return res.status(200).send('Hola');
 });
-
+/* 
 app.get('/check-mongodb-connection', ( _, res ) => {
     // connect(`mongodb://localhost:27017`) // Esto es para probar el servidor conectandose sólo a los containers de las Bases de datos (sin containerizar el servidor).
     connect(`mongodb://${process.env.MONGO_DB_HOST}:27017`)
@@ -49,9 +46,10 @@ app.get('/check-mariadb-connection', ( _, res ) => {
 
     res.send("not connected");
 });
+*/
 
-// // ROUTES:
-// app.use(routes);
+// ROUTES:
+app.use(routes);
 
 
 app.listen(port, () => {
